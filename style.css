@@ -54,65 +54,39 @@ button:hover, .btn:hover {
   transform: scale(1.05);
 }
 
-button:disabled {
-  background-color: #95a5a6;
-  cursor: not-allowed;
-}
-
-/* Input Fields */
-input, select {
-  width: 100%;
-  padding: 0.8em;
-  margin: 1em 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 1em;
-}
-
-input:focus, select:focus {
-  border-color: #2ecc71;
-  outline: none;
-}
-
-/* Headers */
+/* Header */
 header {
   text-align: center;
-  padding: 2em;
+  padding: 3em 1em;
   background: linear-gradient(135deg, #1abc9c, #16a085);
   color: white;
 }
 
-header h1, header h2 {
-  margin: 0;
-  font-size: 2em;
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
 }
 
-header .btn {
-  margin-top: 1.5em;
+header p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
 }
 
-/* Sections */
-section {
-  padding: 2em;
-  text-align: center;
-}
-
-/* Image Placement */
+/* Image Container */
 .image-container {
   text-align: center;
-  margin-top: 50px; /* Adjust this value to move the images down */
+  margin-top: 30px; /* Space between header and images */
 }
 
 .image-container img {
-  width: 150px;
+  width: 150px; /* Consistent size */
   height: auto;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Features */
+/* Features Section */
 .features {
   display: flex;
   justify-content: center;
@@ -137,75 +111,6 @@ section {
 
 .feature-box h3 {
   color: #16a085;
-}
-
-/* Form Pages (Signup & Login) */
-form {
-  max-width: 400px;
-  margin: 2em auto;
-  padding: 2em;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-form label {
-  display: block;
-  margin-bottom: 0.5em;
-  font-weight: bold;
-}
-
-form small {
-  display: block;
-  margin-top: -0.5em;
-  margin-bottom: 1em;
-  font-size: 0.8em;
-  color: #95a5a6;
-}
-
-/* Quiz Page */
-#quiz-container {
-  max-width: 600px;
-  margin: 2em auto;
-  padding: 2em;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#quiz-container p {
-  font-size: 1.2em;
-  margin-bottom: 1em;
-}
-
-#answers button {
-  margin: 0.5em 0;
-  display: block;
-  width: 100%;
-}
-
-/* Scoreboard Page */
-#scoreboard-list {
-  max-width: 600px;
-  margin: 2em auto;
-  padding: 1.5em;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#scoreboard-list li {
-  margin: 1em 0;
-  padding: 0.8em;
-  background-color: #ecf0f1;
-  border-radius: 5px;
-  font-size: 1.1em;
-  text-align: left;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#scoreboard-list li:nth-child(odd) {
-  background-color: #dff9fb;
 }
 
 /* Footer */
