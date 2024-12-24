@@ -5,6 +5,10 @@ body {
   padding: 0;
   background-color: #f4f4f4;
   color: #333;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
 }
 
 /* Navigation Bar */
@@ -13,6 +17,9 @@ nav {
   color: white;
   padding: 1em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: absolute; /* Fix navigation at the top */
+  top: 0;
+  width: 100%; /* Stretch across the screen */
 }
 
 nav ul {
@@ -39,10 +46,10 @@ nav ul li a:hover {
 
 /* Form Container */
 .form-container {
-  max-width: 400px;
-  margin: 3em auto;
-  padding: 2em;
+  width: 100%; /* Full width of the viewport */
+  max-width: 400px; /* Limit form width */
   background-color: white;
+  padding: 2em;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -95,4 +102,7 @@ footer {
   background-color: #34495e;
   color: white;
   font-size: 0.9em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
