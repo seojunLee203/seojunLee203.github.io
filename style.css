@@ -39,6 +39,7 @@ nav ul li a:hover {
 
 /* Buttons */
 button, .btn {
+  display: block; /* Makes buttons block-level for easy centering */
   background-color: #2ecc71;
   color: white;
   border: none;
@@ -46,12 +47,18 @@ button, .btn {
   font-size: 1em;
   border-radius: 5px;
   cursor: pointer;
+  margin: 20px auto; /* Centers buttons horizontally */
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover, .btn:hover {
   background-color: #27ae60;
   transform: scale(1.05);
+}
+
+button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
 }
 
 /* Header */
@@ -111,6 +118,22 @@ header p {
 
 .feature-box h3 {
   color: #16a085;
+}
+
+/* Center Forms and Scoreboard Content */
+form, #scoreboard-list {
+  max-width: 400px;
+  margin: 2em auto; /* Centers horizontally */
+  padding: 2em;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Centers the content inside */
+}
+
+form button, #scoreboard-list button {
+  width: 100%; /* Makes buttons stretch across the form or container */
+  max-width: 200px; /* Optional: Sets a maximum width for buttons */
 }
 
 /* Footer */
