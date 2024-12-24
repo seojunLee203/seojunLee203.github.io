@@ -39,7 +39,8 @@ nav ul li a:hover {
 
 /* Buttons */
 button, .btn {
-  display: block; /* Makes buttons block-level for easy centering */
+  display: block; /* Block-level element for easy centering */
+  margin: 20px auto; /* Center horizontally */
   background-color: #2ecc71;
   color: white;
   border: none;
@@ -47,8 +48,8 @@ button, .btn {
   font-size: 1em;
   border-radius: 5px;
   cursor: pointer;
-  margin: 20px auto; /* Centers buttons horizontally */
   transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center; /* Centers text inside buttons */
 }
 
 button:hover, .btn:hover {
@@ -86,11 +87,12 @@ header p {
 }
 
 .image-container img {
-  width: 150px; /* Consistent size */
-  height: auto;
+  width: 200px; /* Same size for all images */
+  height: 200px; /* Consistent height */
+  object-fit: cover; /* Ensures the image fills the dimensions without distortion */
   margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* Adds rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
 }
 
 /* Features Section */
@@ -123,7 +125,7 @@ header p {
 /* Center Forms and Scoreboard Content */
 form, #scoreboard-list {
   max-width: 400px;
-  margin: 2em auto; /* Centers horizontally */
+  margin: 2em auto; /* Center horizontally */
   padding: 2em;
   background-color: white;
   border-radius: 10px;
