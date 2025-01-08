@@ -20,6 +20,15 @@
         <div class="form-container">
             <h1>Login</h1>
             <form id="login-form">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="login-first-name" disabled placeholder="Display Only">
+
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="login-last-name" disabled placeholder="Display Only">
+
+                <label for="grade">Grade:</label>
+                <input type="text" id="login-grade" disabled placeholder="Display Only">
+
                 <label for="email">Email:</label>
                 <input type="email" id="login-email" required>
 
@@ -33,8 +42,9 @@
     </main>
     <script src="firebase-config.js"></script>
     <script>
-        import { auth } from './firebase-config.js';
-        import { signInWithEmailAndPassword } from "firebase/auth";
+        import { auth, db } from './firebase-config.js';
+        import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+        import { doc, getDoc } from "firebase/firestore";
 
         document.getElementById("login-form").addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -43,7 +53,18 @@
             const password = document.getElementById("login-password").value.trim();
 
             try {
-                await signInWithEmailAndPassword(auth, email, password);
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Fetch user details from Firestore
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                if (userDoc.exists()) {
+                    const userData = userDoc.data();
+                    document.getElementById("login-first-name").value = userData.firstName;
+                    document.getElementById("login-last-name").value = userData.lastName;
+                    document.getElementById("login-grade").value = userData.grade;
+                }
+
                 alert("Login successful!");
                 window.location.href = "quiz.html";
             } catch (error) {
