@@ -17,67 +17,42 @@
         </ul>
     </nav>
     <main>
-        <h1>Sign Up</h1>
-        <form id="signup-form">
-            <label for="fullname">Full Name (First Name Last name):</label>
-            <input type="text" id="signup-fullname" required>
+        <div class="form-container">
+            <h1>Sign Up</h1>
+            <form id="signup-form">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="signup-fullname" required>
 
-            <label for="password">Password:</label>
-            <input type="password" id="signup-password" required>
-            <small>Password must contain: 8 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special
-                character.</small>
+                <label for="email">Email:</label>
+                <input type="email" id="signup-email" required>
 
-            <label for="grade">Grade:</label>
-            <select id="signup-grade" required>
-                <option value="" disabled selected>Select your grade</option>
-                <option value="9">9th Grade</option>
-                <option value="10">10th Grade</option>
-                <option value="11">11th Grade</option>
-                <option value="12">12th Grade</option>
-            </select>
+                <label for="password">Password:</label>
+                <input type="password" id="signup-password" required>
+                <small>Password must be at least 8 characters, with 1 uppercase, 1 lowercase, 1 number, and 1 special character.</small>
 
-            <button type="submit">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="login.html">Log in here.</a></p>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="login.html">Log in here.</a></p>
+        </div>
     </main>
+    <script src="firebase-config.js"></script>
     <script>
-        document.getElementById("signup-form").addEventListener("submit", (event) => {
+        import { auth, db } from './firebase-config.js';
+        import { createUserWithEmailAndPassword } from "firebase/auth";
+
+        document.getElementById("signup-form").addEventListener("submit", async (event) => {
             event.preventDefault();
+            const fullname = document.getElementById("signup-fullname").value;
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
 
-            const fullname = document.getElementById("signup-fullname").value.trim();
-            const password = document.getElementById("signup-password").value.trim();
-            const grade = document.getElementById("signup-grade").value;
-
-            // Validate full name
-            if (!/^([a-zA-Z]+,\s[a-zA-Z]+)$/.test(fullname)) {
-                alert("Full Name must follow the format: Last Name, First Name.");
-                return;
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                alert(`Welcome, ${fullname}! Your account has been created.`);
+                window.location.href = "login.html";
+            } catch (error) {
+                alert(error.message);
             }
-
-            // Validate password
-            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-            if (!passwordRegex.test(password)) {
-                alert("Password must be at least 8 characters long and include 1 uppercase, 1 lowercase, 1 number, and 1 special character.");
-                return;
-            }
-
-            // Validate grade
-            if (!grade) {
-                alert("Please select your grade.");
-                return;
-            }
-
-            // Save user to localStorage
-            const users = JSON.parse(localStorage.getItem("users")) || {};
-            if (users[fullname]) {
-                alert("User already exists. Please choose a different name.");
-                return;
-            }
-
-            users[fullname] = { password, grade };
-            localStorage.setItem("users", JSON.stringify(users));
-            alert("Signup successful! You can now log in.");
-            window.location.href = "login.html";
         });
     </script>
 </body>
