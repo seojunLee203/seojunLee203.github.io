@@ -22,8 +22,10 @@
             <form id="login-form">
                 <label for="email">Email:</label>
                 <input type="email" id="login-email" required>
+
                 <label for="password">Password:</label>
                 <input type="password" id="login-password" required>
+
                 <button type="submit">Login</button>
             </form>
             <p>Don't have an account? <a href="signup.html">Sign up here.</a></p>
@@ -36,15 +38,16 @@
 
         document.getElementById("login-form").addEventListener("submit", async (event) => {
             event.preventDefault();
-            const email = document.getElementById("login-email").value;
-            const password = document.getElementById("login-password").value;
+
+            const email = document.getElementById("login-email").value.trim();
+            const password = document.getElementById("login-password").value.trim();
 
             try {
                 await signInWithEmailAndPassword(auth, email, password);
                 alert("Login successful!");
                 window.location.href = "quiz.html";
             } catch (error) {
-                alert(error.message);
+                alert(`Error: ${error.message}`);
             }
         });
     </script>
