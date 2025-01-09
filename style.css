@@ -5,6 +5,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    text-align: center;
 }
 
 /* Navigation Bar */
@@ -35,24 +36,20 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Header and Main Content */
-main {
-    text-align: center;
-    margin-top: 20px;
-}
-
+/* Form Container */
 .form-container {
     max-width: 400px;
     margin: 3em auto;
     padding: 2em;
-    background-color: white;
+    background: white;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 form label {
     display: block;
     margin: 10px 0 5px;
+    font-weight: bold;
     text-align: left;
 }
 
@@ -83,52 +80,29 @@ form button:hover {
 }
 
 /* Quiz Page */
-#quiz-container {
+.quiz-container {
     max-width: 800px;
     margin: 3em auto;
     padding: 2em;
-    background-color: white;
+    background: white;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#quiz-container h2 {
-    font-size: 1.8em;
-    margin-bottom: 1em;
-}
-
-#answers button {
-    width: 100%;
-    margin: 0.5em 0;
+.quiz-container button {
+    margin: 1em 0;
     padding: 1em;
+    width: 100%;
     font-size: 1.2em;
+    border-radius: 5px;
     border: none;
     background-color: #2ecc71;
     color: white;
-    border-radius: 5px;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-#answers button:hover {
+.quiz-container button:hover {
     background-color: #27ae60;
     transform: scale(1.05);
-}
-
-#solutions-container {
-    margin: 3em auto;
-    max-width: 800px;
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 1em;
-    background-color: #34495e;
-    color: white;
-    font-size: 0.9em;
 }
