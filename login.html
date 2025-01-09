@@ -20,21 +20,6 @@
         <div class="form-container">
             <h1>Login</h1>
             <form id="login-form">
-                <label for="first-name">First Name:</label>
-                <input type="text" id="login-first-name" required>
-
-                <label for="last-name">Last Name:</label>
-                <input type="text" id="login-last-name" required>
-
-                <label for="grade">Grade:</label>
-                <select id="login-grade" required>
-                    <option value="" disabled selected>Select your grade</option>
-                    <option value="9">9th Grade</option>
-                    <option value="10">10th Grade</option>
-                    <option value="11">11th Grade</option>
-                    <option value="12">12th Grade</option>
-                </select>
-
                 <label for="email">Email:</label>
                 <input type="email" id="login-email" required>
 
@@ -48,39 +33,19 @@
     </main>
     <script src="firebase-config.js"></script>
     <script>
-        import { auth, db } from './firebase-config.js';
+        import { auth } from './firebase-config.js';
         import { signInWithEmailAndPassword } from "firebase/auth";
-        import { doc, getDoc } from "firebase/firestore";
 
         document.getElementById("login-form").addEventListener("submit", async (event) => {
             event.preventDefault();
 
-            const firstName = document.getElementById("login-first-name").value.trim();
-            const lastName = document.getElementById("login-last-name").value.trim();
-            const grade = document.getElementById("login-grade").value;
             const email = document.getElementById("login-email").value.trim();
             const password = document.getElementById("login-password").value.trim();
 
             try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-
-                const userDoc = await getDoc(doc(db, "users", user.uid));
-                if (userDoc.exists()) {
-                    const userData = userDoc.data();
-                    if (
-                        userData.firstName === firstName &&
-                        userData.lastName === lastName &&
-                        userData.grade === grade
-                    ) {
-                        alert("Login successful!");
-                        window.location.href = "quiz.html";
-                    } else {
-                        throw new Error("Incorrect personal information.");
-                    }
-                } else {
-                    throw new Error("User data not found.");
-                }
+                await signInWithEmailAndPassword(auth, email, password);
+                alert("Login successful!");
+                window.location.href = "quiz.html";
             } catch (error) {
                 alert(`Error: ${error.message}`);
             }
