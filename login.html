@@ -33,7 +33,7 @@
     </main>
     <script src="firebase-config.js"></script>
     <script>
-        import { auth } from './firebase-config.js';
+        import { auth, db } from './firebase-config.js';
         import { signInWithEmailAndPassword } from "firebase/auth";
 
         document.getElementById("login-form").addEventListener("submit", async (event) => {
@@ -43,8 +43,8 @@
             const password = document.getElementById("login-password").value.trim();
 
             try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                alert("Login successful! Welcome back to CyberTrail.");
+                await signInWithEmailAndPassword(auth, email, password);
+                alert("Login successful!");
                 window.location.href = "quiz.html";
             } catch (error) {
                 alert(`Error: ${error.message}`);
