@@ -43,8 +43,8 @@
             const password = document.getElementById("login-password").value.trim();
 
             try {
-                await signInWithEmailAndPassword(auth, email, password);
-                alert("Login successful!");
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                alert("Login successful! Welcome back to CyberTrail.");
                 window.location.href = "quiz.html";
             } catch (error) {
                 alert(`Error: ${error.message}`);
