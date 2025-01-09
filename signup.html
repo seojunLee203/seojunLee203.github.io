@@ -63,9 +63,11 @@
             const password = document.getElementById("signup-password").value.trim();
 
             try {
+                // Firebase Authentication
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
 
+                // Firebase Firestore
                 await setDoc(doc(db, "users", user.uid), {
                     firstName,
                     lastName,
@@ -73,9 +75,11 @@
                     email
                 });
 
+                // Success Message and Redirection
                 alert("Signup successful! Welcome to CyberTrail.");
                 window.location.href = "login.html";
             } catch (error) {
+                // Display error messages
                 alert(`Error: ${error.message}`);
             }
         });
