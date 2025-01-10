@@ -20,12 +20,6 @@
     </nav>
     <main>
         <h1>Cyber Security Quiz</h1>
-        <div class="learning-section">
-            <h2>Learn About Cyber Security</h2>
-            <p>Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks...</p>
-            <p>Learn about key topics like phishing, malware, ransomware, and more before taking the quiz.</p>
-        </div>
-
         <div class="quiz-container">
             <h2>Select a Category</h2>
             <button id="beginner-btn">Beginner Level</button>
@@ -36,18 +30,15 @@
         <div id="question-block" class="hidden">
             <h3 id="question"></h3>
             <div id="answers"></div>
-        </div>
-
-        <div id="score-block" class="hidden">
-            <h2>Your Score</h2>
-            <p id="score"></p>
-            <button id="view-solutions-btn">View Solutions</button>
-            <button id="reset-btn">Reset Quiz</button>
-        </div>
-
-        <div id="solutions-block" class="hidden">
-            <h2>Solutions</h2>
-            <ul id="solution-list"></ul>
+            <div class="score-section">
+                <p id="score"></p>
+                <button id="view-solutions-btn" class="hidden">View Solutions</button>
+                <button id="reset-btn" class="hidden">Reset Quiz</button>
+            </div>
+            <div id="solutions-block" class="hidden">
+                <h2>Solutions</h2>
+                <ul id="solution-list"></ul>
+            </div>
         </div>
     </main>
     <script type="module" src="script.js"></script>
