@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberTrail - Quiz</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Beautiful+Police+Officer&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -14,38 +15,42 @@
             <li><a href="index.html">Home 🏠</a></li>
             <li><a href="signup.html">Sign Up ✍️</a></li>
             <li><a href="login.html">Login 🔑</a></li>
+            <li><a href="quiz.html">Start Adventure 🚀</a></li>
         </ul>
     </nav>
     <main>
+        <h1>Cyber Security Quiz</h1>
+        <div class="learning-section">
+            <h2>Learn About Cyber Security</h2>
+            <p>Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks...</p>
+            <p>Learn about key topics like phishing, malware, ransomware, and more before taking the quiz.</p>
+        </div>
+
         <div class="quiz-container">
-            <h1>CyberTrail Quiz</h1>
-            <div id="category-selection" class="category-container">
-                <button class="category-btn" id="beginner-btn">Beginner Level</button>
-                <button class="category-btn" id="intermediate-btn">Intermediate Level</button>
-                <button class="category-btn" id="advanced-btn">Advanced Level</button>
-            </div>
-            <div id="quiz-section" class="quiz-section hidden">
-                <h2 id="question">Question</h2>
-                <div id="answers" class="answers-container"></div>
-                <button id="next-btn" class="btn hidden">Next Question</button>
-            </div>
-            <div id="results-section" class="results-section hidden">
-                <h2>Your Score</h2>
-                <p id="final-score"></p>
-                <button id="reset-btn" class="btn">Restart Quiz</button>
-                <button id="solutions-btn" class="btn">View Solutions</button>
-            </div>
-            <div id="solutions-section" class="solutions-section hidden">
-                <h2>Solutions</h2>
-                <ul id="solution-list"></ul>
-                <button id="close-solutions-btn" class="btn">Close</button>
-            </div>
+            <h2>Select a Category</h2>
+            <button id="beginner-btn">Beginner Level</button>
+            <button id="intermediate-btn">Intermediate Level</button>
+            <button id="advanced-btn">Advanced Level</button>
+        </div>
+
+        <div id="question-block" class="hidden">
+            <h3 id="question"></h3>
+            <div id="answers"></div>
+        </div>
+
+        <div id="score-block" class="hidden">
+            <h2>Your Score</h2>
+            <p id="score"></p>
+            <button id="view-solutions-btn">View Solutions</button>
+            <button id="reset-btn">Reset Quiz</button>
+        </div>
+
+        <div id="solutions-block" class="hidden">
+            <h2>Solutions</h2>
+            <ul id="solution-list"></ul>
         </div>
     </main>
+    <script type="module" src="script.js"></script>
 </body>
-<script type="module">
-    import { quizData } from './script.js';
 
-    // Script for handling quiz interactions
-</script>
 </html>
