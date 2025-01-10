@@ -1,23 +1,17 @@
-// firebase-config.js
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDfgIompTwM8HOGJtEZCVivP3bakNCDbpQ",
-    authDomain: "cyber-trail.firebaseapp.com",
-    projectId: "cyber-trail",
-    storageBucket: "cyber-trail.appspot.com",
-    messagingSenderId: "10375411657",
-    appId: "1:10375411657:web:755e620278b4fd68ad5a18",
-    measurementId: "G-J9Y3TQMH5T"
+  apiKey: "AIzaSyBEXNwX5SQtQWnZYS_FbzA2Bd3WalnDXfg",
+  authDomain: "cybertrail-85ca8.firebaseapp.com",
+  projectId: "cybertrail-85ca8",
+  storageBucket: "cybertrail-85ca8.firebasestorage.app",
+  messagingSenderId: "568694430546",
+  appId: "1:568694430546:web:9b593a0253ccb5b593788b"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-export { auth, db };
