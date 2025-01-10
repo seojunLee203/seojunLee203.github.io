@@ -28,11 +28,10 @@
 
                 <button type="submit">Login</button>
             </form>
-            <p>Don't have an account? <a href="signup.html">Sign up here.</a></p>
         </div>
     </main>
     <script type="module">
-        import { auth, db } from './firebase-config.js';
+        import { auth } from './firebase-config.js';
         import { signInWithEmailAndPassword } from "firebase/auth";
 
         document.getElementById("login-form").addEventListener("submit", async (event) => {
@@ -43,7 +42,7 @@
 
             try {
                 await signInWithEmailAndPassword(auth, email, password);
-                alert("Login successful!");
+                alert("Login Successful! Welcome back.");
                 window.location.href = "quiz.html";
             } catch (error) {
                 alert(`Error: ${error.message}`);
