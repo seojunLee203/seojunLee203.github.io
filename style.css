@@ -5,6 +5,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    text-align: center;
 }
 
 /* Navigation */
@@ -26,15 +27,11 @@ nav ul li a {
     font-size: 1.2em;
 }
 
-/* Centered Sections */
-main, .form-container, .info-block {
-    max-width: 800px;
+/* Main Sections */
+main {
     margin: 20px auto;
     padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    max-width: 600px;
 }
 
 /* Buttons */
@@ -50,4 +47,25 @@ button {
 
 button:hover {
     background-color: #1abc9c;
+}
+
+/* Home Page Blocks */
+.info-block {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 2px solid #16a085;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Quiz Blocks */
+.quiz-container, #question-block, #solutions-block {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid #16a085;
+    border-radius: 10px;
+    text-align: center;
 }
