@@ -47,8 +47,7 @@
             <p>Already have an account? <a href="login.html">Log in here.</a></p>
         </div>
     </main>
-    <script src="firebase-config.js"></script>
-    <script>
+    <script type="module">
         import { auth, db } from './firebase-config.js';
         import { createUserWithEmailAndPassword } from "firebase/auth";
         import { doc, setDoc } from "firebase/firestore";
@@ -63,11 +62,9 @@
             const password = document.getElementById("signup-password").value.trim();
 
             try {
-                // Firebase Authentication
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
 
-                // Firebase Firestore
                 await setDoc(doc(db, "users", user.uid), {
                     firstName,
                     lastName,
@@ -75,11 +72,9 @@
                     email
                 });
 
-                // Success Message and Redirection
-                alert("Signup successful! Welcome to CyberTrail.");
+                alert("Success: Your account has been created.");
                 window.location.href = "login.html";
             } catch (error) {
-                // Display error messages
                 alert(`Error: ${error.message}`);
             }
         });
