@@ -8,47 +8,66 @@ const quizData = {
         },
         {
             question: "Which of these describes phishing?",
-            options: ["Sending fake emails", "Gaining unauthorized access", "Installing malware"],
+            options: ["Sending fake emails", "Hacking into systems", "Installing malware"],
             answer: "Sending fake emails"
         },
         {
             question: "What does 'https' in a URL stand for?",
-            options: ["Hyper Text Transfer Protocol Secure", "High Text Transfer Secure", "None of the above"],
+            options: ["Hyper Text Transfer Protocol Secure", "High Transfer Protocol Service", "None of the above"],
             answer: "Hyper Text Transfer Protocol Secure"
+        },
+        {
+            question: "What is the primary purpose of antivirus software?",
+            options: ["Speed up your computer", "Prevent malware infections", "Provide internet access"],
+            answer: "Prevent malware infections"
         }
     ],
     intermediate: [
         {
             question: "What does DNS convert domain names into?",
-            options: ["IP Address", "Hex Code", "Binary"],
+            options: ["IP Address", "Binary", "Encrypted Text"],
             answer: "IP Address"
         },
         {
             question: "What is a DoS attack?",
-            options: ["Denial of Service", "Data on Site", "Dynamic Overload System"],
+            options: ["Denial of Service", "Dynamic Overload System", "Data on Site"],
             answer: "Denial of Service"
         },
         {
-            question: "Which of the following describes encryption?",
-            options: ["Securing data into unreadable form", "Data transfer method", "Code to decrypt passwords"],
-            answer: "Securing data into unreadable form"
+            question: "Which protocol is used for secure communication over the internet?",
+            options: ["HTTP", "HTTPS", "FTP"],
+            answer: "HTTPS"
+        },
+        {
+            question: "Which of the following is an example of social engineering?",
+            options: ["Using brute force attacks", "Tricking someone into giving personal information", "Installing a virus"],
+            answer: "Tricking someone into giving personal information"
         }
     ],
     advanced: [
         {
             question: "What is used for encrypting data at the network level?",
-            options: ["IPSec", "S/MIME", "SMTP", "HTTPS"],
+            options: ["IPSec", "S/MIME", "SMTP"],
             answer: "IPSec"
         },
         {
-            question: "Which protocol is the least secure?",
-            options: ["WEP", "WPA2", "WPA3", "SFTP"],
+            question: "Which is the least secure encryption protocol?",
+            options: ["WEP", "WPA2", "WPA3"],
             answer: "WEP"
         },
         {
-            question: "Which tool is used to scan for vulnerabilities?",
-            options: ["Angry IP Scanner", "Wireshark", "Metasploit", "Nmap"],
-            answer: "Nmap"
+            question: "What does CHAP stand for?",
+            options: [
+                "Circuit Handshake Authentication Protocols",
+                "Challenge Handshake Authentication Protocols",
+                "Challenge Hardware Authentication Protocols"
+            ],
+            answer: "Challenge Handshake Authentication Protocols"
+        },
+        {
+            question: "What is the process of hiding information within an image called?",
+            options: ["Steganography", "Data Masking", "Encryption"],
+            answer: "Steganography"
         }
     ]
 };
@@ -96,7 +115,10 @@ function displayQuestion() {
 function checkAnswer(selectedOption) {
     const currentQuestion = currentCategory[currentQuestionIndex];
     if (selectedOption === currentQuestion.answer) {
+        alert("Correct!");
         score++;
+    } else {
+        alert(`Incorrect! The correct answer is: ${currentQuestion.answer}`);
     }
     currentQuestionIndex++;
     if (currentQuestionIndex < currentCategory.length) {
@@ -116,6 +138,7 @@ function endQuiz() {
 
 // Reset Quiz
 resetButton.addEventListener("click", () => {
+    questionContainer.style.display = "none";
     scoreElement.style.display = "none";
     resetButton.style.display = "none";
-    quest
+});
