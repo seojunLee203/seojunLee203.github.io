@@ -39,17 +39,13 @@
 
             <label for="password">Password:</label>
             <input type="password" id="signup-password" required>
-            <small>Password must be at least 8 characters, with 1 uppercase, 1 lowercase, 1 number, and 1 special character.</small>
+            <small>Password must be at least 8 characters long.</small>
 
             <button type="submit">Sign Up</button>
         </form>
     </main>
-    <script type="module">
-        import { auth, db } from './firebase-config.js';
-        import { createUserWithEmailAndPassword } from "firebase/auth";
-        import { doc, setDoc } from "firebase/firestore";
-
-        document.getElementById("signup-form").addEventListener("submit", async (event) => {
+    <script>
+        document.getElementById("signup-form").addEventListener("submit", (event) => {
             event.preventDefault();
 
             const firstName = document.getElementById("signup-first-name").value.trim();
@@ -58,22 +54,17 @@
             const email = document.getElementById("signup-email").value.trim();
             const password = document.getElementById("signup-password").value.trim();
 
-            try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-
-                await setDoc(doc(db, "users", user.uid), {
-                    firstName,
-                    lastName,
-                    grade,
-                    email
-                });
-
-                alert("Sign Up Successful! Your account has been created.");
-                window.location.href = "login.html";
-            } catch (error) {
-                alert(`Error: ${error.message}`);
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return;
             }
+
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            users.push({ firstName, lastName, grade, email, password });
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert("Sign-Up Successful! Welcome to CyberTrail.");
+            window.location.href = "login.html";
         });
     </script>
 </body>
