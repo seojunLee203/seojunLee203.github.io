@@ -1,16 +1,16 @@
 /* General Styles */
-body, html {
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: url('https://www.centerforfinancialinclusion.org/wp-content/uploads/2024/01/iStock-1422766384-1.jpg') no-repeat center center fixed;
+    background-size: cover;
     color: #333;
-    height: 100%; /* Ensure full viewport height */
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
-/* Navigation Bar */
 nav ul {
     display: flex;
     justify-content: center;
@@ -19,204 +19,58 @@ nav ul {
     list-style: none;
 }
 
-nav ul li {
-    margin: 0 15px;
-}
-
 nav ul li a {
     text-decoration: none;
     color: white;
     font-size: 1.2em;
 }
 
-/* Header */
 header {
-    background-color: #1abc9c;
-    color: white;
     text-align: center;
-    padding: 3em 1em;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2em;
     margin-bottom: 20px;
 }
 
-header h1 {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-}
-
-header p {
-    font-size: 1.2em;
-    margin-bottom: 1.5em;
-}
-
-header .btn {
-    display: inline-block;
-    padding: 1em 2em;
-    background-color: #16a085;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1.2em;
-    margin-top: 1em;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-header .btn:hover {
-    background-color: #27ae60;
-    transform: scale(1.05);
-}
-
-/* Main Content (Home and Quiz) */
 main {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 1em;
-    background-color: #f4f4f4;
+    gap: 20px;
+    padding: 2em;
 }
 
-/* Sections for Home Page */
 section {
-    width: 90%;
-    max-width: 800px;
-    background-color: white;
-    padding: 2em;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5em;
     margin: 1em 0;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-}
-
-/* Form Layout (Sign Up & Login Pages) */
-form {
-    width: 90%;
-    max-width: 500px;
-    margin: auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-form label {
-    display: block;
-    margin: 15px 0 5px;
-    font-weight: bold;
-}
-
-form input, form select, form button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
-form button {
-    background-color: #16a085;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-form button:hover {
-    background-color: #27ae60;
-    transform: scale(1.05);
-}
-
-/* Quiz Page Enhancements */
-.quiz-container {
-    width: 90%;
     max-width: 800px;
-    background-color: white;
-    padding: 20px;
-    margin: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    width: 90%;
 }
 
-.quiz-container h2 {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-}
-
-.quiz-container button {
-    padding: 10px 20px;
-    margin: 10px auto;
+button {
+    padding: 0.8em 1.5em;
     background-color: #16a085;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.quiz-container button:hover {
-    background-color: #1abc9c;
-    transform: scale(1.05);
-}
-
-.quiz-container #answers button {
-    margin: 5px 0;
-    width: 100%;
-    text-align: left;
-}
-
-/* Quiz Buttons and Sections */
-.quiz-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.quiz-buttons button {
-    padding: 15px 30px;
-    font-size: 1.2em;
-    border-radius: 8px;
-    background-color: #16a085;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-}
-
-.quiz-buttons button:hover {
+button:hover {
     background-color: #27ae60;
-    transform: scale(1.1);
-}
-
-/* Results Section */
-#results {
-    margin-top: 30px;
-    text-align: center;
-}
-
-#results button {
-    margin: 10px auto;
-    padding: 10px 20px;
-    background-color: #34495e;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-}
-
-#results button:hover {
-    background-color: #2c3e50;
     transform: scale(1.05);
 }
 
-/* Footer */
 footer {
-    background-color: #34495e;
-    color: white;
     text-align: center;
     padding: 1em;
-    flex-shrink: 0;
+    background-color: #34495e;
+    color: white;
 }
