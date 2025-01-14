@@ -11,36 +11,32 @@
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Home 🏠</a></li>
-            <li><a href="signup.html">Sign Up ✍️</a></li>
-            <li><a href="login.html">Login 🔑</a></li>
-            <li><a href="quiz.html">Start Adventure 🚀</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quiz.html">Cybersecurity Quiz</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+            <li><a href="login.html">Login</a></li>
         </ul>
     </nav>
-    <header class="center">
-        <h1>Cyber Security Quiz</h1>
-        <p>Test your cybersecurity knowledge with our beginner, intermediate, and advanced level quizzes.</p>
-    </header>
     <main>
-        <div class="quiz-container">
-            <h2>Select a Category</h2>
-            <button id="beginner-btn">Beginner Level</button>
-            <button id="intermediate-btn">Intermediate Level</button>
-            <button id="advanced-btn">Advanced Level</button>
-        </div>
-        <div id="question-container" class="hidden">
-            <h3 id="question"></h3>
-            <div id="answers"></div>
-        </div>
-        <div id="results" class="hidden">
-            <p id="score"></p>
-            <button id="reset-btn">Restart Quiz</button>
-        </div>
+        <section class="quiz-intro">
+            <h1>Take the Cybersecurity Quiz</h1>
+            <p>Test your knowledge with our beginner, intermediate, and advanced questions.</p>
+            <button id="start-quiz" class="btn">Start the Quiz</button>
+        </section>
+        <section id="quiz-section" class="hidden">
+            <div id="question-container">
+                <h2 id="quiz-question"></h2>
+                <div id="quiz-options"></div>
+                <button id="next-question" class="btn hidden">Next Question</button>
+            </div>
+        </section>
+        <section id="quiz-results" class="hidden">
+            <h2>Your Results</h2>
+            <p id="score-display"></p>
+            <button id="restart-quiz" class="btn">Restart Quiz</button>
+        </section>
     </main>
-    <footer>
-        <p>© 2024 CyberTrail | Test Your Cyber Knowledge 🔒</p>
-    </footer>
-    <script type="module" src="script.js"></script>
+    <script type="module" src="quiz.js"></script>
 </body>
 
 </html>
