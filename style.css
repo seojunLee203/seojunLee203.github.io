@@ -3,12 +3,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: url('https://www.centerforfinancialinclusion.org/wp-content/uploads/2024/01/iStock-1422766384-1.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background-color: #f9f9f9;
     color: #333;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 }
 
 nav ul {
@@ -19,58 +15,62 @@ nav ul {
     list-style: none;
 }
 
+nav ul li {
+    margin: 0 15px;
+}
+
 nav ul li a {
     text-decoration: none;
     color: white;
     font-size: 1.2em;
 }
 
-header {
+.hero-section {
     text-align: center;
-    background: rgba(0, 0, 0, 0.7);
+    background-color: #1abc9c;
     color: white;
-    padding: 2em;
-    margin-bottom: 20px;
+    padding: 3em 1em;
+}
+
+.hero-section h1 {
+    font-size: 2.5em;
+}
+
+.hero-section p {
+    font-size: 1.2em;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 2em;
-}
-
-section {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 1.5em;
-    margin: 1em 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
     max-width: 800px;
-    width: 90%;
+    margin: 2em auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-button {
-    padding: 0.8em 1.5em;
+.quiz-intro,
+#quiz-section,
+#quiz-results {
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
     background-color: #16a085;
     color: white;
-    border: none;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-button:hover {
+.btn:hover {
     background-color: #27ae60;
     transform: scale(1.05);
 }
 
-footer {
-    text-align: center;
-    padding: 1em;
-    background-color: #34495e;
-    color: white;
+.hidden {
+    display: none;
 }
