@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberTrail - Home</title>
+    <title>CyberTrail - Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,31 +18,27 @@
         </ul>
     </nav>
     <header class="center">
-        <h1>Test Your Cybersecurity Knowledge! 🔒</h1>
-        <p>Are you ready to explore the basics of cybersecurity? Take our short quiz to test your knowledge and learn more!</p>
+        <h1>Take the Cybersecurity Quiz</h1>
+        <p>Do you know the basics of cybersecurity? Test your knowledge and learn more in the results.</p>
+        <button id="start-quiz-btn" class="btn">Start the Test</button>
     </header>
-    <main>
-        <section>
-            <h2>What Is Cybersecurity?</h2>
-            <p>Cybersecurity involves protecting systems, networks, and data from cyber threats. These measures are critical to safeguarding sensitive information and ensuring online safety.</p>
-        </section>
-        <section>
-            <h2>Why Is Cybersecurity Important?</h2>
-            <p>Cyber threats can affect individuals, businesses, and governments. Strong defenses ensure data security, prevent identity theft, and protect critical infrastructure.</p>
-        </section>
-        <section>
-            <h2>Learn to Stay Safe</h2>
-            <ul>
-                <li>Use strong passwords and enable two-factor authentication.</li>
-                <li>Avoid phishing scams by verifying email links.</li>
-                <li>Keep software and systems updated for security patches.</li>
-            </ul>
-        </section>
-        <a href="quiz.html" class="btn">Take the Cybesecurity Quiz Now</a>
+    <main id="quiz-main" class="hidden">
+        <div id="quiz-container" class="quiz-container">
+            <h2 id="quiz-question"></h2>
+            <div id="quiz-answers"></div>
+            <button id="next-question-btn" class="btn hidden">Next Question</button>
+        </div>
+        <div id="quiz-results" class="hidden">
+            <h2>Your Results</h2>
+            <p id="final-score"></p>
+            <div id="solutions"></div>
+            <button id="restart-quiz-btn" class="btn">Restart Quiz</button>
+        </div>
     </main>
     <footer>
-        <p>© 2025 CyberTrail | Empowering Cyber Awareness 🔒</p>
+        <p>© 2024 CyberTrail | Test Your Cyber Knowledge 🔒</p>
     </footer>
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>
