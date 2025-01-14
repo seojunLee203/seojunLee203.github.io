@@ -1,144 +1,103 @@
-// Quiz Data
-const quizData = {
-    beginner: [
-        {
-            question: "What is a strong password?",
-            options: ["12345678", "Your name and birthday", "A mix of letters, numbers, and symbols"],
-            answer: "A mix of letters, numbers, and symbols"
-        },
-        {
-            question: "Which of these describes phishing?",
-            options: ["Sending fake emails", "Hacking into systems", "Installing malware"],
-            answer: "Sending fake emails"
-        },
-        {
-            question: "What does 'https' in a URL stand for?",
-            options: ["Hyper Text Transfer Protocol Secure", "High Transfer Protocol Service", "None of the above"],
-            answer: "Hyper Text Transfer Protocol Secure"
-        },
-        {
-            question: "What is the primary purpose of antivirus software?",
-            options: ["Speed up your computer", "Prevent malware infections", "Provide internet access"],
-            answer: "Prevent malware infections"
-        }
-    ],
-    intermediate: [
-        {
-            question: "What does DNS convert domain names into?",
-            options: ["IP Address", "Binary", "Encrypted Text"],
-            answer: "IP Address"
-        },
-        {
-            question: "What is a DoS attack?",
-            options: ["Denial of Service", "Dynamic Overload System", "Data on Site"],
-            answer: "Denial of Service"
-        },
-        {
-            question: "Which protocol is used for secure communication over the internet?",
-            options: ["HTTP", "HTTPS", "FTP"],
-            answer: "HTTPS"
-        },
-        {
-            question: "Which of the following is an example of social engineering?",
-            options: ["Using brute force attacks", "Tricking someone into giving personal information", "Installing a virus"],
-            answer: "Tricking someone into giving personal information"
-        }
-    ],
-    advanced: [
-        {
-            question: "What is used for encrypting data at the network level?",
-            options: ["IPSec", "S/MIME", "SMTP"],
-            answer: "IPSec"
-        },
-        {
-            question: "Which is the least secure encryption protocol?",
-            options: ["WEP", "WPA2", "WPA3"],
-            answer: "WEP"
-        },
-        {
-            question: "What does CHAP stand for?",
-            options: [
-                "Circuit Handshake Authentication Protocols",
-                "Challenge Handshake Authentication Protocols",
-                "Challenge Hardware Authentication Protocols"
-            ],
-            answer: "Challenge Handshake Authentication Protocols"
-        },
-        {
-            question: "What is the process of hiding information within an image called?",
-            options: ["Steganography", "Data Masking", "Encryption"],
-            answer: "Steganography"
-        }
-    ]
-};
+const quizData = [
+    {
+        question: "Complete the sentence: ‘Bringing your own device is usually…’",
+        options: [
+            "More risky than using work-supplied devices",
+            "Just as risky as using work-supplied devices",
+            "Less risky than using work-supplied devices"
+        ],
+        answer: "More risky than using work-supplied devices",
+        explanation: "‘Bringing your own device’ is usually more risky because they aren’t protected by your company’s security solutions."
+    },
+    {
+        question: "Which of the following is more likely to be the victim of a cyberattack?",
+        options: ["Small business", "Large business"],
+        answer: "Small business",
+        explanation: "Small businesses are more likely targets as they often lack robust cybersecurity measures."
+    },
+    {
+        question: "Of the following passwords, which is the most secure?",
+        options: [
+            "123456",
+            "dragon",
+            "Bi%DuIn!So57Lo",
+            "D00R8377"
+        ],
+        answer: "Bi%DuIn!So57Lo",
+        explanation: "Strong passwords combine letters, numbers, and symbols to resist brute-force attacks."
+    }
+];
 
-// Initialize Quiz
-let currentCategory = null;
 let currentQuestionIndex = 0;
 let score = 0;
 
 // DOM Elements
-const questionContainer = document.getElementById("question-container");
-const questionElement = document.getElementById("question");
-const answersElement = document.getElementById("answers");
-const scoreElement = document.getElementById("score");
-const resetButton = document.getElementById("reset-btn");
+const startQuizBtn = document.getElementById("start-quiz-btn");
+const quizMain = document.getElementById("quiz-main");
+const quizContainer = document.getElementById("quiz-container");
+const quizQuestion = document.getElementById("quiz-question");
+const quizAnswers = document.getElementById("quiz-answers");
+const nextQuestionBtn = document.getElementById("next-question-btn");
+const quizResults = document.getElementById("quiz-results");
+const finalScore = document.getElementById("final-score");
+const solutions = document.getElementById("solutions");
+const restartQuizBtn = document.getElementById("restart-quiz-btn");
 
-// Attach Event Listeners
-document.getElementById("beginner-btn").addEventListener("click", () => startQuiz("beginner"));
-document.getElementById("intermediate-btn").addEventListener("click", () => startQuiz("intermediate"));
-document.getElementById("advanced-btn").addEventListener("click", () => startQuiz("advanced"));
+// Event Listeners
+startQuizBtn.addEventListener("click", startQuiz);
+nextQuestionBtn.addEventListener("click", loadNextQuestion);
+restartQuizBtn.addEventListener("click", restartQuiz);
 
-// Start Quiz
-function startQuiz(category) {
-    currentCategory = quizData[category];
+function startQuiz() {
+    startQuizBtn.classList.add("hidden");
+    quizMain.classList.remove("hidden");
     currentQuestionIndex = 0;
     score = 0;
-    displayQuestion();
+    loadNextQuestion();
 }
 
-// Display Question
-function displayQuestion() {
-    const currentQuestion = currentCategory[currentQuestionIndex];
-    questionElement.textContent = currentQuestion.question;
-    answersElement.innerHTML = "";
-    currentQuestion.options.forEach(option => {
-        const button = document.createElement("button");
-        button.textContent = option;
-        button.onclick = () => checkAnswer(option);
-        answersElement.appendChild(button);
-    });
-    questionContainer.style.display = "block";
-}
-
-// Check Answer
-function checkAnswer(selectedOption) {
-    const currentQuestion = currentCategory[currentQuestionIndex];
-    if (selectedOption === currentQuestion.answer) {
-        alert("Correct!");
-        score++;
+function loadNextQuestion() {
+    if (currentQuestionIndex < quizData.length) {
+        const currentQuestion = quizData[currentQuestionIndex];
+        quizQuestion.textContent = currentQuestion.question;
+        quizAnswers.innerHTML = "";
+        currentQuestion.options.forEach(option => {
+            const button = document.createElement("button");
+            button.classList.add("btn");
+            button.textContent = option;
+            button.addEventListener("click", () => handleAnswer(option));
+            quizAnswers.appendChild(button);
+        });
+        quizContainer.classList.remove("hidden");
+        nextQuestionBtn.classList.add("hidden");
     } else {
-        alert(`Incorrect! The correct answer is: ${currentQuestion.answer}`);
+        showResults();
+    }
+}
+
+function handleAnswer(selectedOption) {
+    const currentQuestion = quizData[currentQuestionIndex];
+    if (selectedOption === currentQuestion.answer) {
+        score++;
+        alert("Correct!");
+    } else {
+        alert(`Incorrect! Correct Answer: ${currentQuestion.answer}`);
     }
     currentQuestionIndex++;
-    if (currentQuestionIndex < currentCategory.length) {
-        displayQuestion();
-    } else {
-        endQuiz();
-    }
+    nextQuestionBtn.classList.remove("hidden");
 }
 
-// End Quiz
-function endQuiz() {
-    questionContainer.style.display = "none";
-    scoreElement.textContent = `Your Score: ${score}/${currentCategory.length}`;
-    scoreElement.style.display = "block";
-    resetButton.style.display = "block";
+function showResults() {
+    quizContainer.classList.add("hidden");
+    quizResults.classList.remove("hidden");
+    finalScore.textContent = `You scored ${score}/${quizData.length}!`;
+    solutions.innerHTML = quizData
+        .map((q, i) => `<p><strong>Q${i + 1}:</strong> ${q.question} <br><em>Answer:</em> ${q.answer} <br>${q.explanation}</p>`)
+        .join("");
 }
 
-// Reset Quiz
-resetButton.addEventListener("click", () => {
-    questionContainer.style.display = "none";
-    scoreElement.style.display = "none";
-    resetButton.style.display = "none";
-});
+function restartQuiz() {
+    quizResults.classList.add("hidden");
+    quizMain.classList.add("hidden");
+    startQuizBtn.classList.remove("hidden");
+}
