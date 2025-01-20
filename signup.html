@@ -1,72 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberTrail - Sign Up</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <title>Sign Up</title>
+    <style>
+        /* Styles for Sign-Up page */
+        body {
+            font-family: 'MierB03', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a192f;
+            color: #e6f1ff;
+            text-align: center;
+            background-image: linear-gradient(rgba(10, 25, 47, 0.95), rgba(10, 25, 47, 0.95)),
+                url('https://www.centerforfinancialinclusion.org/wp-content/uploads/2024/01/iStock-1422766384-1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
 
+        .auth-section {
+            width: 100%;
+            max-width: 600px;
+            margin: 80px auto;
+            background-color: rgba(17, 34, 64, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #64ffda;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0 20px;
+            border: 2px solid #233554;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #64ffda;
+            outline: none;
+        }
+
+        button {
+            background-color: #64ffda;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 1.2rem;
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1e3d8f;
+        }
+
+        button:active {
+            background-color: #163a63;
+        }
+
+        .auth-section p {
+            color: #8892b0;
+            font-size: 1rem;
+        }
+
+        .auth-section a {
+            color: #64ffda;
+            text-decoration: none;
+        }
+
+        .auth-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="signup.html">Sign Up</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </nav>
-    <main>
+    <div class="auth-section">
         <h1>Sign Up</h1>
         <form id="signup-form">
-            <label for="first-name">First Name:</label>
-            <input type="text" id="signup-first-name" required>
-
-            <label for="last-name">Last Name:</label>
-            <input type="text" id="signup-last-name" required>
-
-            <label for="grade">Grade:</label>
-            <select id="signup-grade" required>
-                <option value="" disabled selected>Select your grade</option>
-                <option value="9">9th Grade</option>
-                <option value="10">10th Grade</option>
-                <option value="11">11th Grade</option>
-                <option value="12">12th Grade</option>
-            </select>
-
-            <label for="email">Email:</label>
-            <input type="email" id="signup-email" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="signup-password" required>
-            <small>Password must be at least 8 characters long.</small>
-
+            <input type="text" id="first-name" placeholder="First Name" required>
+            <input type="text" id="last-name" placeholder="Last Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
             <button type="submit">Sign Up</button>
         </form>
-    </main>
+        <p>Already have an account? <a href="login.html">Log In</a></p>
+    </div>
+
     <script>
-        document.getElementById("signup-form").addEventListener("submit", (event) => {
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
             event.preventDefault();
 
-            const firstName = document.getElementById("signup-first-name").value.trim();
-            const lastName = document.getElementById("signup-last-name").value.trim();
-            const grade = document.getElementById("signup-grade").value;
-            const email = document.getElementById("signup-email").value.trim();
-            const password = document.getElementById("signup-password").value.trim();
+            // Get form values
+            const firstName = document.getElementById("first-name").value;
+            const lastName = document.getElementById("last-name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
 
-            if (password.length < 8) {
-                alert("Password must be at least 8 characters long.");
+            // Check if user already exists
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Check if user with the same email already exists
+            if (users.some(user => user.email === email)) {
+                alert("User already exists. Please log in.");
                 return;
             }
 
-            const users = JSON.parse(localStorage.getItem("users")) || [];
-            users.push({ firstName, lastName, grade, email, password });
+            // Add new user
+            const newUser = { firstName, lastName, email, password };
+            users.push(newUser);
+
+            // Save users data to LocalStorage
             localStorage.setItem("users", JSON.stringify(users));
 
-            alert("Sign-Up Successful! Welcome to CyberTrail.");
+            // Redirect to login page with success message
+            alert("You have successfully signed up! Redirecting to login page.");
             window.location.href = "login.html";
         });
     </script>
 </body>
-
 </html>
