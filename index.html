@@ -1,36 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberTrail - Home</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Cybersecurity Quiz</title>
+    <style>
+        body {
+            font-family: 'MierB03', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a192f;
+            color: #e6f1ff;
+            text-align: center;
+        }
+
+        header {
+            background-image: url('https://www.centerforfinancialinclusion.org/wp-content/uploads/2024/01/iStock-1422766384-1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 60vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+
+        .hero-section {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .cta-buttons {
+            margin-top: 30px;
+        }
+
+        .large-btn {
+            background-color: transparent;
+            color: #64ffda;
+            padding: 15px 30px;
+            text-decoration: none;
+            border: 2px solid #64ffda;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .large-btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+        }
+
+        section.info {
+            padding: 40px;
+            margin: 20px auto;
+            background-color: rgba(17, 34, 64, 0.95);
+            max-width: 1200px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            color: #64ffda;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 1.2rem;
+            text-align: left;
+        }
+
+        ul li {
+            margin-bottom: 15px;
+        }
+
+        .study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .study-card {
+            background: rgba(17, 34, 64, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #233554;
+            cursor: pointer;
+        }
+
+        .study-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+            border-color: #64ffda;
+        }
+
+        .study-card h3 {
+            color: #64ffda;
+            margin-bottom: 15px;
+        }
+
+        .study-card p {
+            color: #8892b0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+    </style>
 </head>
-
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="quiz.html">Cybersecurity Quiz</a></li>
-            <li><a href="signup.html">Sign Up</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </nav>
-    <header class="hero-section">
-        <h1>Welcome to CyberTrail</h1>
-        <p>Your ultimate resource for cybersecurity knowledge.</p>
+    <header>
+        <div class="hero-section">
+            <h1>Master Cybersecurity</h1>
+            <p>Test your knowledge and learn to protect your digital world</p>
+            <div class="cta-buttons">
+                <a href="quiz.html" class="large-btn">Start Quiz</a>
+                <a href="signup.html" class="large-btn">Sign Up</a>
+                <a href="login.html" class="large-btn">Log In</a>
+            </div>
+        </div>
     </header>
-    <main>
-        <section>
-            <h2>Test Your Cybersecurity Knowledge</h2>
-            <p>How much do you know about staying safe online? Take our quiz to find out and learn more along the way!</p>
-            <a href="quiz.html" class="btn">Take the Quiz</a>
-        </section>
-    </main>
-    <footer>
-        <p>© 2024 CyberTrail. All rights reserved.</p>
-    </footer>
-</body>
 
+    <section class="info">
+        <h2>Why Cybersecurity Matters</h2>
+        <p>In today's interconnected world, cybersecurity is more important than ever. With increasing digital threats and sophisticated attacks, understanding how to protect yourself online is crucial for everyone, from individuals to large organizations.</p>
+    </section>
+
+    <div class="study-grid">
+        <div class="study-card">
+            <h3>Malware Protection</h3>
+            <p>Learn about different types of malware, how they spread, and essential protection strategies to keep your systems safe.</p>
+        </div>
+        <div class="study-card">
+            <h3>Phishing Awareness</h3>
+            <p>Discover how to identify and avoid sophisticated phishing attempts that target your sensitive information.</p>
+        </div>
+        <div class="study-card">
+            <h3>Data Protection</h3>
+            <p>Understand best practices for securing sensitive data and maintaining privacy in the digital age.</p>
+        </div>
+        <div class="study-card">
+            <h3>Ransomware Defense</h3>
+            <p>Learn about ransomware attacks and implement effective strategies to prevent and recover from them.</p>
+        </div>
+        <div class="study-card">
+            <h3>Email Security</h3>
+            <p>Master the techniques to identify and protect against email-based threats and social engineering attacks.</p>
+        </div>
+        <div class="study-card">
+            <h3>Two-Factor Authentication</h3>
+            <p>Explore how 2FA adds an extra layer of security to your accounts and why it's essential in modern security.</p>
+        </div>
+        <!-- Two new study cards added -->
+        <div class="study-card">
+            <h3>Cybersecurity Laws</h3>
+            <p>Get familiar with cybersecurity laws, regulations, and best practices to ensure compliance with digital security standards.</p>
+        </div>
+        <div class="study-card">
+            <h3>Network Security</h3>
+            <p>Learn how to protect your network infrastructure from unauthorized access and potential attacks.</p>
+        </div>
+    </div>
+</body>
 </html>
