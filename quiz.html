@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Quiz</title>
+    <title>CyberPatriot Quiz</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -13,8 +13,8 @@
             background-color: #0a192f;
             color: #e6f1ff;
             background-image: linear-gradient(rgba(10, 25, 47, 0.95), rgba(10, 25, 47, 0.95)),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" x="50" dominant-baseline="middle" text-anchor="middle" font-size="40">🔒</text></svg>');
-            background-size: 200px;
+                url('https://digitalhealth.org.au/wp-content/uploads/2022/03/technology-security-concept-safety-digital-protection-system-1080x675.jpg');
+            background-size: cover;
         }
 
         .quiz-container {
@@ -190,15 +190,15 @@
 <body>
     <div class="quiz-container">
         <div class="quiz-header">
-            <h1>Cybersecurity Quiz</h1>
-            <p>Test your knowledge of cybersecurity basics</p>
+            <h1>CyberPatriot Quiz</h1>
+            <p>Test your knowledge about CyberPatriot and cybersecurity basics!</p>
             <div class="progress-bar">
                 <div class="progress"></div>
             </div>
         </div>
 
         <div id="quiz" class="question-container">
-            <!-- Questions will be inserted here -->
+            <!-- Questions will be dynamically inserted here -->
         </div>
 
         <div class="navigation">
@@ -214,233 +214,10 @@
             <div class="feedback" id="feedback"></div>
             <div class="answer-review" id="answer-review"></div>
             <button class="restart-btn" onclick="restartQuiz()">Try Again</button>
-            <a href="index.html" class="home-btn">Back to Home</a> <!-- Back to Home Button -->
+            <a href="index.html" class="home-btn">Back to Home</a>
         </div>
     </div>
 
-    <script>
-        const questions = [
-            {
-                question: "Complete the sentence: 'Bringing your own device is usually…'",
-                options: [
-                    "More risky than using work-supplied devices",
-                    "Just as risky as using work-supplied devices",
-                    "Less risky than using work-supplied devices"
-                ],
-                correct: 0,
-                explanation: "'Bringing your own device' is usually more risky than using work-supplied devices because they aren't protected by your company's security solutions."
-            },
-            {
-                question: "Which of the following is more likely to be the victim of a cyberattack?",
-                options: [
-                    "Small business",
-                    "Large business"
-                ],
-                correct: 0,
-                explanation: "Small businesses are often more vulnerable to cyberattacks due to limited security resources and expertise."
-            },
-            {
-                question: "Of the following passwords, which is the most secure?",
-                options: [
-                    "123456",
-                    "dragon",
-                    "Bi%DuIn!So57Lo",
-                    "iLoVeYou",
-                    "D00R8377",
-                    "1q2w3e4r"
-                ],
-                correct: 2,
-                explanation: "Bi%DuIn!So57Lo is the most secure as it contains a mix of uppercase, lowercase, numbers, and special characters."
-            },
-            {
-                question: "What does VPN stand for?",
-                options: [
-                    "Virtual Private Network",
-                    "Very Public Network",
-                    "Visual Private Network"
-                ],
-                correct: 0,
-                explanation: "VPN stands for Virtual Private Network, which provides a secure connection to the internet by encrypting your data."
-            },
-            {
-                question: "What is the most common type of cyberattack?",
-                options: [
-                    "SQL Injection",
-                    "Phishing",
-                    "Ransomware"
-                ],
-                correct: 1,
-                explanation: "Phishing is the most common cyberattack, as attackers use emails or websites to trick individuals into providing sensitive information."
-            },
-            {
-                question: "What is an example of a strong password?",
-                options: [
-                    "password123",
-                    "abcdef",
-                    "F2!m4pPz7@Q",
-                    "summer2022"
-                ],
-                correct: 2,
-                explanation: "A strong password contains a mix of uppercase and lowercase letters, numbers, and symbols."
-            },
-            {
-                question: "What is Two-Factor Authentication (2FA)?",
-                options: [
-                    "A method to track login attempts",
-                    "A system that requires two methods to verify identity",
-                    "A way to reset forgotten passwords"
-                ],
-                correct: 1,
-                explanation: "Two-Factor Authentication (2FA) adds an additional layer of security by requiring a second form of verification besides just a password."
-            },
-            {
-                question: "What is ransomware?",
-                options: [
-                    "Malware that locks your files and demands payment to unlock them",
-                    "A method to secure personal data",
-                    "A tool used to track data usage"
-                ],
-                correct: 0,
-                explanation: "Ransomware locks your files and demands a ransom payment for them to be unlocked."
-            },
-            {
-                question: "What does HTTPS stand for?",
-                options: [
-                    "Hyper Text Transfer Protocol Secure",
-                    "Hyper Text Transport Protocol Secure",
-                    "Hyper Text Transfer Protocol Standard"
-                ],
-                correct: 0,
-                explanation: "HTTPS ensures that the communication between your browser and the website is encrypted and secure."
-            },
-            {
-                question: "What is a common sign of phishing?",
-                options: [
-                    "A professional-looking email with an urgent request for personal information",
-                    "An email asking you to confirm a product order",
-                    "An email with a familiar sender and no links or attachments"
-                ],
-                correct: 0,
-                explanation: "Phishing attempts often use urgent messages to trick individuals into revealing sensitive information or clicking malicious links."
-            }
-        ];
-
-        let currentQuestion = 0;
-        let answers = new Array(questions.length).fill(null);
-
-        function displayQuestion() {
-            const question = questions[currentQuestion];
-            const quizContainer = document.getElementById('quiz');
-            
-            let html = `
-                <div class="question">${currentQuestion + 1}. ${question.question}</div>
-                <div class="options">
-            `;
-            
-            question.options.forEach((option, index) => {
-                const isSelected = answers[currentQuestion] === index;
-                html += `
-                    <div class="option ${isSelected ? 'selected' : ''}" 
-                         onclick="selectOption(${index})">
-                        ${option}
-                    </div>
-                `;
-            });
-            
-            html += '</div>';
-            quizContainer.innerHTML = html;
-            
-            updateProgress();
-            updateButtons();
-        }
-
-        function selectOption(index) {
-            answers[currentQuestion] = index;
-            displayQuestion();
-        }
-
-        function nextQuestion() {
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                displayQuestion();
-            } else {
-                showResults();
-            }
-        }
-
-        function previousQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                displayQuestion();
-            }
-        }
-
-        function updateProgress() {
-            const progress = document.querySelector('.progress');
-            const percentage = ((currentQuestion + 1) / questions.length) * 100;
-            progress.style.width = `${percentage}%`;
-        }
-
-        function updateButtons() {
-            document.getElementById('prev-btn').disabled = currentQuestion === 0;
-            const nextBtn = document.getElementById('next-btn');
-            nextBtn.textContent = currentQuestion === questions.length - 1 ? 'Finish Quiz' : 'Next';
-        }
-
-        function showResults() {
-            document.getElementById('quiz').style.display = 'none';
-            document.querySelector('.navigation').style.display = 'none';
-            document.getElementById('results').style.display = 'block';
-
-            const score = answers.reduce((total, answer, index) => 
-                total + (answer === questions[index].correct ? 1 : 0), 0);
-            
-            document.getElementById('score').textContent = score;
-            
-            const feedback = document.getElementById('feedback');
-            if (score <= 3) {
-                feedback.textContent = "It's definitely time to brush up on your cybersecurity basics.";
-            } else if (score <= 7) {
-                feedback.textContent = "Good effort! But there's room for improvement in your cybersecurity knowledge.";
-            } else {
-                feedback.textContent = "Excellent! You have a strong understanding of cybersecurity basics.";
-            }
-
-            displayAnswerReview();
-        }
-
-        function displayAnswerReview() {
-            const reviewContainer = document.getElementById('answer-review');
-            let html = '<h2>Review Your Answers</h2>';
-
-            questions.forEach((question, index) => {
-                const userAnswer = answers[index] !== null ? question.options[answers[index]] : 'Not answered';
-                const correctAnswer = question.options[question.correct];
-                
-                html += `
-                    <div class="answer-item">
-                        <h3>Question ${index + 1}</h3>
-                        <p><strong>Your answer:</strong> ${userAnswer}</p>
-                        <p><strong>Correct answer:</strong> ${correctAnswer}</p>
-                        <p><strong>Explanation:</strong> ${question.explanation}</p>
-                    </div>
-                `;
-            });
-
-            reviewContainer.innerHTML = html;
-        }
-
-        function restartQuiz() {
-            currentQuestion = 0;
-            answers = new Array(questions.length).fill(null);
-            document.getElementById('quiz').style.display = 'block';
-            document.querySelector('.navigation').style.display = 'flex';
-            document.getElementById('results').style.display = 'none';
-            displayQuestion();
-        }
-
-        // Start the quiz
-        displayQuestion();
-    </script>
+    <script src="quiz.js"></script>
 </body>
 </html>
