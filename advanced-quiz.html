@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Cybersecurity Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="timer">Time remaining: <span id="time">30:00</span></div>
+        <div id="quiz"></div>
+    </div>
+
+    <script>
+        const advancedQuestions = [
+            {
+                question: "What is a buffer overflow attack?",
+                options: [
+                    "An attack that overwrites memory beyond the intended buffer",
+                    "A denial of service attack",
+                    "A type of social engineering",
+                    "A malware infection method"
+                ],
+                correct: 0,
+                explanation: "Buffer overflow attacks exploit software vulnerabilities by writing more data into memory than it can handle."
+            },
+            {
+                question: "Which protocol is used for encrypted web browsing?",
+                options: [
+                    "HTTPS",
+                    "HTTP",
+                    "FTP",
+                    "DNS"
+                ],
+                correct: 0,
+                explanation: "HTTPS encrypts communication between a browser and a website to ensure secure transactions."
+            },
+            {
+                question: "What does a zero-day vulnerability mean?",
+                options: [
+                    "A security flaw that has no available fix",
+                    "A new malware variant",
+                    "A type of social engineering attack",
+                    "An outdated encryption method"
+                ],
+                correct: 0,
+                explanation: "A zero-day vulnerability is a flaw that has not yet been patched, making it highly exploitable."
+            },
+            {
+                question: "Which hashing algorithm is considered outdated and insecure?",
+                options: [
+                    "MD5",
+                    "SHA-256",
+                    "AES-256",
+                    "RSA"
+                ],
+                correct: 0,
+                explanation: "MD5 is vulnerable to collision attacks and should not be used for secure hashing."
+            },
+            {
+                question: "What is a SQL Injection attack?",
+                options: [
+                    "An attack that manipulates database queries to access sensitive data",
+                    "A method to prevent data leaks",
+                    "A technique to optimize website speed",
+                    "A way to protect SQL databases"
+                ],
+                correct: 0,
+                explanation: "SQL Injection allows attackers to execute malicious SQL queries to access or manipulate database content."
+            }
+        ];
+
+        function loadQuiz() {
+            document.getElementById("quiz").innerHTML = "<p>Advanced quiz is under maintenance. Please check back later.</p>";
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>
 
