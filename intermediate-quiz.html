@@ -1,1 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intermediate Cybersecurity Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="timer">Time remaining: <span id="time">30:00</span></div>
+        <div id="quiz">
+            <!-- Questions will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const intermediateQuestions = [
+            {
+                question: "What is the purpose of encryption?",
+                options: [
+                    "To convert data into a format that unauthorized users cannot read",
+                    "To compress data to save storage space",
+                    "To speed up data transmission",
+                    "To organize data more efficiently"
+                ],
+                correct: 0,
+                explanation: "Encryption ensures that only authorized users can access sensitive data by transforming it into unreadable ciphertext."
+            },
+            {
+                question: "What does a VPN do?",
+                options: [
+                    "Provides a secure connection over a public network",
+                    "Eliminates the need for antivirus software",
+                    "Physically disconnects a device from the internet",
+                    "Blocks all incoming traffic"
+                ],
+                correct: 0,
+                explanation: "A VPN (Virtual Private Network) encrypts your internet connection, keeping your data secure from hackers."
+            },
+            {
+                question: "Which type of malware spreads without human interaction?",
+                options: [
+                    "Worm",
+                    "Trojan Horse",
+                    "Spyware",
+                    "Adware"
+                ],
+                correct: 0,
+                explanation: "A worm is a type of malware that can spread across networks without human intervention."
+            },
+            {
+                question: "What is multi-factor authentication (MFA)?",
+                options: [
+                    "A method that requires two or more verification steps",
+                    "A way to reset passwords automatically",
+                    "A backup security system",
+                    "An encryption technique"
+                ],
+                correct: 0,
+                explanation: "MFA enhances security by requiring users to verify their identity using two or more methods."
+            },
+            {
+                question: "What is the most effective way to prevent phishing attacks?",
+                options: [
+                    "Training employees to recognize phishing emails",
+                    "Relying on spam filters",
+                    "Ignoring all emails",
+                    "Using only social media for communication"
+                ],
+                correct: 0,
+                explanation: "Employee training and awareness are key to preventing phishing attacks."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let timer;
+        const timeLimit = 30 * 60; // 30 minutes in seconds
+        let timeRemaining = timeLimit;
+
+        function startTimer() {
+            timer = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                if (timeRemaining <= 0) {
+                    endQuiz();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            document.getElementById('time').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function displayQuestion() {
+            const question = intermediateQuestions[currentQuestion];
+            const quizContainer = document.getElementById('quiz');
+
+            let html = `
+                <div class="question-card">
+                    <h2>Question ${currentQuestion + 1}</h2>
+                    <p>${question.question}</p>
+                    <div class="options">
+            `;
+
+            question.options.forEach((option, index) => {
+                html += `<div class="option" onclick="selectOption(${index})">${option}</div>`;
+            });
+
+            html += `</div><div class="explanation" id="explanation">${question.explanation}</div></div>`;
+
+            quizContainer.innerHTML = html;
+        }
+
+        function selectOption(index) {
+            const options = document.querySelectorAll('.option');
+            const explanation = document.getElementById('explanation');
+
+            options.forEach(option => option.classList.remove('selected'));
+            options[index].classList.add('selected');
+
+            if (index === intermediateQuestions[currentQuestion].correct) {
+                options[index].classList.add('correct');
+                score++;
+            } else {
+                options[index].classList.add('incorrect');
+                options[intermediateQuestions[currentQuestion].correct].classList.add('correct');
+            }
+
+            explanation.style.display = 'block';
+
+            setTimeout(() => {
+                if (currentQuestion < intermediateQuestions.length - 1) {
+                    currentQuestion++;
+                    displayQuestion();
+                } else {
+                    endQuiz();
+                }
+            }, 2000);
+        }
+
+        function endQuiz() {
+            clearInterval(timer);
+            const percentage = (score / intermediateQuestions.length) * 100;
+            const quizContainer = document.getElementById('quiz');
+
+            let feedback = percentage >= 80 ? "Great job! You have a strong understanding of cybersecurity." :
+                          percentage >= 60 ? "Good effort! Keep learning and improving." :
+                          "Keep practicing! Cybersecurity is an ongoing learning process.";
+
+            quizContainer.innerHTML = `<div class="score-card">
+                <h2>Quiz Complete!</h2>
+                <p>Your score: ${score}/${intermediateQuestions.length} (${percentage}%)</p>
+                <p>${feedback}</p>
+                <button onclick="restartQuiz()">Try Again</button>
+                <button onclick="window.location.href='index.html'">Back to Home</button>
+            </div>`;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            timeRemaining = timeLimit;
+            clearInterval(timer);
+            startTimer();
+            displayQuestion();
+        }
+
+        startTimer();
+        displayQuestion();
+    </script>
+</body>
+</html>
 
