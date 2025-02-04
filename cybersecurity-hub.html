@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Study Hub</title>
+    <style>/* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a192f;
+            color: #e6f1ff;
+            text-align: center;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 60px 20px;
+            background-color: rgba(17, 34, 64, 0.95);
+            margin-bottom: 40px;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            color: #64ffda;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            color: #8892b0;
+            margin-top: 15px;
+        }
+        
+        /* Study Hub Grid */
+        .study-hub-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Study Cards */
+        .study-card {
+            background: rgba(17, 34, 64, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid #233554;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .study-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+            border-color: #64ffda;
+        }
+        
+        .study-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .study-card h2 {
+            color: #64ffda;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .study-card p {
+            color: #8892b0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .study-hub-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+        
+            .study-card img {
+                height: 150px;
+            }
+        }
+        </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Cybersecurity Study Hub</h1>
+        <p>Enhance your cybersecurity knowledge with in-depth learning modules and practical insights.</p>
+    </div>
+
+    <!-- Study Hub Content -->
+    <section class="study-hub-container">
+        
+        <div class="study-card">
+            <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_network_security.jpg" alt="Network Security">
+            <h2>Network Security</h2>
+            <p>Learn about firewalls, VPNs, intrusion detection systems, and how to secure networks from threats.</p>
+        </div>
+
+        <div class="study-card">
+            <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_ethical_hacking.jpg" alt="Ethical Hacking">
+            <h2>Ethical Hacking</h2>
+            <p>Explore penetration testing techniques and responsible vulnerability disclosures to strengthen defenses.</p>
+        </div>
+
+        <div class="study-card">
+            <img src="https://www.comptia.org/docs/default-source/comptia-comptiaorg/blog-images/cybersecurity/soc-operations-center.jpg" alt="Security Operations">
+            <h2>Security Operations</h2>
+            <p>Discover how Security Operations Centers (SOCs) monitor, detect, and respond to cyber threats.</p>
+        </div>
+
+        <div class="study-card">
+            <img src="https://www.itpro.com/sites/itpro.com/files/styles/article_main_image/public/2022/04/ransomware-attack.jpg" alt="Malware & Ransomware">
+            <h2>Malware & Ransomware</h2>
+            <p>Understand different types of malware, including viruses, worms, and ransomware attacks.</p>
+        </div>
+
+        <div class="study-card">
+            <img src="https://www.sentinelone.com/wp-content/uploads/2020/05/phishing-attacks-featured.jpg" alt="Phishing Attacks">
+            <h2>Phishing Attacks</h2>
+            <p>Learn how attackers use phishing emails to steal sensitive data and how to prevent such attacks.</p>
+        </div>
+
+        <div class="study-card">
+            <img src="https://www.itgovernance.co.uk/media/images/blog/sql-injection.jpg" alt="SQL Injection">
+            <h2>SQL Injection</h2>
+            <p>Understand how hackers exploit databases using SQL Injection and ways to protect web applications.</p>
+        </div>
+
+        <div class="study-card">
+            <img src="https://www.imperva.com/learn/wp-content/uploads/sites/13/2022/07/ddos-attack-768x512.jpg" alt="Denial of Service">
+            <h2>Denial of Service (DoS) Attacks</h2>
+            <p>Discover how DoS attacks overwhelm networks and how to defend against them.</p>
+        </div>
+
+        <div class="study-card">
+            <img src="https://www.techtarget.com/rms/Definition-Images/identity-access-management-IAM.jpg" alt="Authentication & Access Control">
+            <h2>Authentication & Access Control</h2>
+            <p>Learn about user authentication methods, multi-factor authentication (MFA), and access control policies.</p>
+        </div>
+
+    </section>
+
+</body>
+</html>
